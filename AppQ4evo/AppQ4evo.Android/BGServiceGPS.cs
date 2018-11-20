@@ -52,7 +52,7 @@ namespace AppQ4evo.Droid
                 {
                     await gp.GetGPSGeral();
 
-                }, null, 0, 60000);
+                }, null, 0, 300000);
         }
 
 
