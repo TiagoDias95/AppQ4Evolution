@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppQ4evo.Services" BackgroundColor="White"
+             x:Class="AppQ4evo.Views.Chat">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="LightSlateGray" />
+                <Setter Property="BorderRadius" Value="5"/>
+                <Setter Property="HeightRequest" Value="42"/>
+                <Setter Property="Opacity" Value="0.8"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+                <DataTemplate x:Key="FromTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <Frame IsClippedToBounds="False" 
+                    OutlineColor="Black" CornerRadius="15"
+                    HasShadow="True" VerticalOptions="Start" Margin="2"
+                    HorizontalOptions="FillAndExpand" BackgroundColor="WhiteSmoke">
+                            <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="End">
+                            <StackLayout >
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding users_in}" FontSize="Medium" TextColor="Purple"/>
+                                    <Label Text=" para " FontSize="Medium"/>
+                                    <Label Text="{Binding userEscrito}" FontSize="Medium" TextColor="Purple"/>
+                                </StackLayout>
+                                <Label Text="{Binding data_hora}" FontSize="Medium"/>
+                                <Label Text="{Binding descricao}" FontSize="Large"  TextColor="Black"/>
+                            </StackLayout>
+                            <Image Source="user_one.png" WidthRequest="75" HeightRequest="75"/>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+
+            <DataTemplate x:Key="ToTemplate">
+                <ViewCell>
+                    <ViewCell.View>
+                        <Frame IsClippedToBounds="False" 
+                    OutlineColor="Black" CornerRadius="15"
+                    HasShadow="True" VerticalOptions="Start"
+                    HorizontalOptions="FillAndExpand" Margin="2">
+                            <StackLayout Orientation="Horizontal" Spacing="5">
+                                <Image Source="user_two.png" WidthRequest="75" HeightRequest="75"/>
+                                <StackLayout >
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding users_in}" FontSize="Medium" TextColor="Purple"/>
+                                        <Label Text=" para " FontSize="Medium"/>
+                                        <Label Text="{Binding userEscrito}" FontSize="Medium" TextColor="Purple"/>
+                                    </StackLayout>
+                                    <Label Text="{Binding data_hora}" FontSize="Medium"/>
+                                    <Label Text="{Binding descricao}" FontSize="Large" TextColor="Black"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+            <local:ChatDataTemplateSelector x:Key="chatDataTemplateSelector" FromTemplate="{StaticResource FromTemplate}"
+                                            ToTemplate="{StaticResource ToTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Spacing="2">
+            <Label Text="Chat" FontSize="30" BackgroundColor="DimGray" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="White" />
+            <ListView x:Name="listMensagens" HasUnevenRows="True" ItemTemplate="{StaticResource chatDataTemplateSelector}"/>
+            <StackLayout  Margin="5,5">
+                <Editor x:Name="EnviarText" HeightRequest="60"/>
+                <Button Text="Enviar" Clicked="Button_Clicked_Mandar" Style="{StaticResource buttonStyle}"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

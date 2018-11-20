@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:AppQ4evo"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             x:Class="AppQ4evo.Menu"
+             BackgroundColor="White">
+    
+    <ContentPage.ToolbarItems>
+
+        <ToolbarItem x:Name="icon" Order="Primary" Icon="srw_circular.png" Priority="-1"/>
+        <ToolbarItem x:Name="NomeUser" Order="Primary" Priority="0" Clicked="NomeUser_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout Padding="5">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5.0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Row="0" Grid.Column="0"
+                    IsClippedToBounds="False" 
+                    OutlineColor="Gray"
+                    HasShadow="True" VerticalOptions="Start"
+                    HorizontalOptions="FillAndExpand" >
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Veiculo que está a utilizar" Grid.Row="0" Grid.Column="0" XAlign="Center" YAlign="Center" TextColor="Gray" FontAttributes="Bold" FontSize="Large"/>
+                        <Label x:Name="MatriculaMenu" TextColor="Black" Grid.Row="1" Grid.Column="0" XAlign="Center" YAlign="Center" FontAttributes="Bold" FontSize="50">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" 
+                    IsClippedToBounds="False" 
+                    OutlineColor="Gray"
+                    HasShadow="True" VerticalOptions="Start"
+                    HorizontalOptions="FillAndExpand">
+                    <Grid VerticalOptions="Center" HorizontalOptions="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Km's do ultimo serviço" Grid.Row="0" Grid.Column="0" XAlign="Center" YAlign="Center" TextColor="Gray" FontAttributes="Bold" FontSize="Large"/>
+                        <Label x:Name="numeroKm" TextColor="Black" Grid.Row="1" Grid.Column="0" XAlign="Center" YAlign="Center" FontAttributes="Bold" FontSize="50"/>
+                    </Grid>
+                </Frame>
+
+                <Frame Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"   
+                    IsClippedToBounds="False" 
+                    OutlineColor="Gray"
+                    HasShadow="True" VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Label Text="Serviços" XAlign="Center" YAlign="Start" TextColor="Gray" FontAttributes="Bold" FontSize="Large"/>
+                        <forms:ChartView x:Name="ChartServicos" HeightRequest="180" WidthRequest="180"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

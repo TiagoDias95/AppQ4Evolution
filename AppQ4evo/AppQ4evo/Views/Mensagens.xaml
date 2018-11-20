@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="White"
+             x:Class="AppQ4evo.Views.Mensagens">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="icon" Order="Primary" Icon="icons_mensagem.png" Priority="-1" Clicked="icon_Clicked_Send_Mens">
+        </ToolbarItem>
+        <ToolbarItem x:Name="iconCalendario" Order="Primary" Icon="icalendar.png" Priority="-1" Clicked="iconCalendario_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="grid" TargetType="Grid">
+                <Setter Property="RowSpacing" Value="15"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Style="{StaticResource grid}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="ListViewChat">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0.1"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.RowSpan="1" BackgroundColor="DimGray" Text="Mensagens" XAlign="Center" YAlign="Center" TextColor="White" FontAttributes="Bold" FontSize="25"/>
+            <BoxView Color="Black" Grid.Row="1" HeightRequest="0.25" />
+        </Grid>
+        <AbsoluteLayout x:Name="absLayout" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <ListView x:Name="ListShowMensagens"
+                  ItemsSource="{Binding .}"
+                  HasUnevenRows="True"
+                  Margin="1,33" 
+                  ItemTapped="ListView_ItemTapped_AbrirChat"
+                  HeightRequest="{Binding Path=Height, Source={x:Reference absLayout}}"
+                  WidthRequest="{Binding Path=Width, Source={x:Reference absLayout}}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="60"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding userEscrito}"  XAlign="Start" YAlign="End" FontSize="Medium" TextColor="Black"/>
+                                    <Label Grid.Row="1" Grid.Column="2" Text="{Binding data_hora}" XAlign="End" YAlign="Start" FontSize="Small" TextColor="Black"/>
+                                    <BoxView Color="DimGray" Margin="5, 0, 0, 0" Grid.Column="0" Grid.Row="1" />
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </AbsoluteLayout>
+    </Grid>
+</ContentPage>

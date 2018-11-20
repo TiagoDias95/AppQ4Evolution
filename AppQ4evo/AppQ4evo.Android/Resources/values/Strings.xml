@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="app_name">AppQ4evo</string>
+  <string name="ok">OK</string>
+	<string name="notification_text">A aplicação está a correr minimizada</string>
+  <string name="permission_location_rationale">This app requires access to the device location in order to work.</string>
+</resources>

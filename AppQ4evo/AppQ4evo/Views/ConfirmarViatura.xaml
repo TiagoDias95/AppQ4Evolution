@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppQ4evo.Views.ConfirmarViatura"
+             BackgroundColor="White"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="LightSlateGray" />
+                <Setter Property="BorderRadius" Value="5"/>
+                <Setter Property="HeightRequest" Value="42"/>
+                <Setter Property="Opacity" Value="0.9"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid RowSpacing="0" BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="270" />
+            <RowDefinition Height="40"  />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Image Grid.RowSpan="1" Aspect="AspectFill" Source="Entrada.jpg"></Image>
+        <BoxView Grid.RowSpan="1" BackgroundColor="lightsteelblue"  Opacity="0.8" />
+        <Image Grid.RowSpan="1" Source="carW.png"></Image>
+
+
+        <StackLayout Grid.Row="2" Orientation="Vertical">
+            <StackLayout Grid.Column="0" Grid.Row="0">
+
+                <Label Text="Esta é a ultima matricula da ultima viatura utilizada neste Dispositivo" XAlign="Center" YAlign="Center"  FontSize="Large" FontAttributes="Bold" TextColor="Black"/>
+                <Label x:Name="matriculaSaved" Font="bold" FontSize="45" XAlign="Center"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" Grid.Row="1">
+                <Label Text="Vai continuar a utilizar este veiculo?" XAlign="Center" FontSize="Large" TextColor="Black"/>
+
+                <BoxView BackgroundColor="White"/>
+
+                <Button x:Name="sim"
+                Text="SIM" 
+                Clicked="sim_Clicked"
+                TextColor="White" Style="{StaticResource buttonStyle}">
+                </Button>
+                <Button x:Name="nao"
+                Text="NÃO" 
+                Clicked="nao_Clicked"
+                TextColor="white" Style="{StaticResource buttonStyle}">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ser="clr-namespace:AppQ4evo.Services"
+             x:Class="AppQ4evo.Views.Editar"
+             BackgroundColor="White"
+             x:Name="this">
+    <ContentPage.BindingContext>
+        <x:Reference Name="this"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="LightSlateGray" />
+                <Setter Property="BorderRadius" Value="5"/>
+                <Setter Property="HeightRequest" Value="42"/>
+                <Setter Property="Opacity" Value="0.8"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            <Style x:Key="grid" TargetType="Grid">
+                <Setter Property="RowSpacing" Value="6"/>
+            </Style>
+            <Style x:Key="lb1" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="LightBlue"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="1" >
+        <Label Text="Edite os campos que desejar e guarde no fim " BackgroundColor="DimGray" XAlign="Center" YAlign="Center" FontSize="Large" TextColor="White" FontAttributes="Bold"/>
+        <ListView x:Name="listaToc"          
+               ItemsSource="{Binding ., Mode=TwoWay}" 
+               HasUnevenRows="True"
+              Margin="5,15"
+                >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <Grid Padding="1" Style="{StaticResource grid}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Row="0" Grid.Column="0" Text="Cliente: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium" />
+                                <Label Grid.Row="1" Grid.Column="0" Text="Ano assistência: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="2" Grid.Column="0" Text="Pagamento no local: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="3" Grid.Column="0" Text="Tempo de espera(minutos): " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="4" Grid.Column="0" Text="Número de acompanhantes: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="5" Grid.Column="0" Text="Número de assisências: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="6" Grid.Column="0" Text="Inicio: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="7" Grid.Column="0" Text="Fim: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="8" Grid.Column="0" Text="Código de terceiros: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="9" Grid.Column="0" Text="Segurado: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="10" Grid.Column="0" Text="Contacto do Segurado: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="11" Grid.Column="0" Text="Carga(Km): " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="12" Grid.Column="0" Text="Descarga(Km): " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="13" Grid.Column="0" Text="Estado" XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="14" Grid.Column="0" Text="Local de Partida" XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="15" Grid.Column="0" Text="Local de Destino" XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="16" Grid.Column="0" Text="Observações da carga: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="17" Grid.Column="0" Text="Observações da descarga: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="18" Grid.Column="0" Text="Veiculo: " XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Medium"/>
+                                <Label Grid.Row="0" Grid.Column="1" x:Name="clienteIn" Text="{Binding cliente}" FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="1" Grid.Column="1" x:Name="anoassisIn" Text="{Binding ano_assistencia}"   FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="2" Grid.Column="1" x:Name="pagolocalIn" Text="{Binding pago_no_local}"   FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="3" Grid.Column="1" x:Name="esperaminIn" Text="{Binding espera_em_minutos}"  FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="4" Grid.Column="1" x:Name="numacomIn" Text="{Binding numero_acompanhantes}"  FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="5" Grid.Column="1" x:Name="numassisIn" Text="{Binding numero_assistencia}"  FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="6" Grid.Column="1" x:Name="cargaHIn" Text="{Binding carga_hora, StringFormat='\{0:dd-MM-yyyy hh:mm\}'}"  FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="7" Grid.Column="1" x:Name="descarHIn" Text="{Binding descarga_hora}"   FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="8" Grid.Column="1" x:Name="codeterIn" Text="{Binding codigo_terceiro}"   FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="9" Grid.Column="1" x:Name="contnomeIn" Text="{Binding contacto_nome}" FontSize="Medium"  TextColor="Black" />
+                                <Label Grid.Row="10" Grid.Column="1" x:Name="contactelIn" Text="{Binding contacto_telefone}"   FontSize="Medium" TextColor="Black"/>
+                                <Entry Grid.Row="11" Grid.Column="1" x:Name="cargaKMIn" Text="{Binding carga_kms}"  FontSize="Medium" TextColor="Black"/>
+                                <Entry Grid.Row="12" Grid.Column="1" x:Name="descKMIn" Text="{Binding descarga_kms}"   FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="13" Grid.Column="1" x:Name="estadoIn" Text="{Binding estado}" FontSize="Medium" TextColor="Black"/>
+                                <Label Grid.Row="14" Grid.Column="1" x:Name="cargaLoIn" Text="{Binding carga_local}" FontSize="Medium"  TextColor="Black"/>
+                                <Label Grid.Row="15" Grid.Column="1" x:Name="descaLoIn" Text="{Binding descarga_local}" FontSize="Medium"  TextColor="Black" />
+                                <Entry Grid.Row="16" Grid.Column="1" x:Name="cargaobsIn" Text="{Binding carga_observacaoes}" FontSize="Medium"   TextColor="Black"/>
+                                <Entry Grid.Row="17" Grid.Column="1" x:Name="descobsIn" Text="{Binding descarga_observacoes}" FontSize="Medium"   TextColor="Black"/>
+                                <Label Grid.Row="18" Grid.Column="1" Text="{Binding matricula}" FontSize="Medium" TextColor="Black"/>
+                                <Button Grid.Row="19" Grid.ColumnSpan="1" Text="Guardar" Clicked="Button_Clicked_SaveAsync" Style="{StaticResource buttonStyle}"/>
+                            </Grid>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

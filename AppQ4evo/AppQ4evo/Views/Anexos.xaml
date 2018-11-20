@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppQ4evo.Views.Anexos">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="LightSlateGray" />
+                <Setter Property="BorderRadius" Value="5"/>
+                <Setter Property="HeightRequest" Value="42"/>
+                <Setter Property="Opacity" Value="0.8"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout>
+        <StackLayout>
+            <Label Text="Anexos" FontSize="25" BackgroundColor="DimGray" TextColor="White" XAlign="Center" YAlign="Center"/>
+            <Label x:Name="TituloAnexo" Text="Escolher o ficheiro a colocar:" FontSize="Medium"/>
+            <Button x:Name="botaoFicheiro" Text="Escolher Ficheiro" Clicked="_button_Clicked_File" Style="{StaticResource buttonStyle}"/>
+        </StackLayout>
+
+        <StackLayout>
+            <Label Text="Escolha o ficheiro a abrir"/>
+            <ListView x:Name="ListAnexos" ItemsSource="{Binding .}" HasUnevenRows="True" ItemTapped="ListAnexos_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" Text="{Binding .}" XAlign="Start" YAlign="Center" TextColor="Black" FontAttributes="Bold" FontSize="Small"/>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

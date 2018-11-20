@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AppQ4evo"
+             xmlns:VM="clr-namespace:AppQ4evo.ViewModels; assembly=AppQ4evo.ViewModels"
+             x:Class="AppQ4evo.Views.Detalhes" BackgroundColor="White"
+             x:Name="this">
+             
+    <ContentPage.BindingContext>
+        <x:Reference Name="this"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="LightSlateGray" />
+                <Setter Property="BorderRadius" Value="5"/>
+                <Setter Property="HeightRequest" Value="42"/>
+                <Setter Property="Opacity" Value="0.8"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            <Style x:Key="grid" TargetType="Grid">
+                <Setter Property="RowSpacing" Value="6"/>
+            </Style>
+            <Style x:Key="lb1" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="LightBlue"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="XAlign" Value="Start"/>
+                <Setter Property="YAlign" Value="Center"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style x:Key="lb2" TargetType="Label">
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="XAlign" Value="Start"/>
+                <Setter Property="YAlign" Value="Center"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style x:Key="lbRest" TargetType="Label">
+                <Setter Property="XAlign" Value="Start"/>
+                <Setter Property="YAlign" Value="Center"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Spacing="1" BackgroundColor="White">
+    <Label Text="Detalhes do Cliente selecionado" BackgroundColor="DimGray" XAlign="Center" YAlign="Center" FontSize="Large" TextColor="White" FontAttributes="Bold"/>
+        <BoxView Color="Black" HeightRequest="1.0" />
+
+        <ListView x:Name="details" Margin="5"
+                  ItemsSource="{Binding .}"                   
+                  HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                    <ViewCell x:Name="cell">
+                        <ViewCell.View>
+                            <Grid Style="{StaticResource grid}" >
+                                <Grid.RowDefinitions >
+                        <RowDefinition  Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                                <Label Grid.Row="1" Grid.Column="0" Text="Cliente: " Style="{StaticResource lb1}"/>
+                                <Label Grid.Row="2" Grid.Column="0" Text="Ano assistência: " Style="{StaticResource lb2}"/>
+                                <Label Grid.Row="3" Grid.Column="0" Text="Pagamento no local: " Style="{StaticResource lb1}"/>
+                                <Label Grid.Row="4" Grid.Column="0" Text="Tempo de espera(minutos): " Style="{StaticResource lb2}"/>
+                                <Label Grid.Row="5" Grid.Column="0" Text="Número de acompanhantes: " Style="{StaticResource lb1}"/>
+                                <Label Grid.Row="6" Grid.Column="0" Text="Número de assisências: " Style="{StaticResource lb2}"/>
+                                <Label Grid.Row="7" Grid.Column="0" Text="Inicio: " Style="{StaticResource lb1}"/>
+                                <Label Grid.Row="8" Grid.Column="0" Text="Fim: " Style="{StaticResource lb2}"/>
+                                <Label Grid.Row="9" Grid.Column="0" Text="Código de terceiros: " Style="{StaticResource lb1}"/>
+                                <Label Grid.Row="10" Grid.Column="0" Text="Segurado: " Style="{StaticResource lb2}"/>
+                                <Label Grid.Row="11" Grid.Column="0" Text="Contacto do Segurado: " Style="{StaticResource lb1}"/>
+                                <Label Grid.Row="12" Grid.Column="0" Text="Carga(Km): " Style="{StaticResource lb2}"/>
+                                <Label Grid.Row="13" Grid.Column="0" Text="Descarga(Km): " Style="{StaticResource lb1}"/>
+                                <Label Grid.Row="14" Grid.Column="0" Text="Estado: " Style="{StaticResource lb2}"/>
+                                <Label Grid.Row="15" Grid.Column="0" Text="Local de Partida: " Style="{StaticResource lb1}"/>
+                                <Label Grid.Row="16" Grid.Column="0" Text="Local de Destino: " Style="{StaticResource lb2}"/>
+                                <Label Grid.Row="17" Grid.Column="0" Text="Observações da carga: " Style="{StaticResource lb1}"/>
+                                <Label Grid.Row="18" Grid.Column="0" Text="Observações da descarga: " Style="{StaticResource lb2}"/>
+                                <Label Grid.Row="19" Grid.Column="0" Text="Veiculo: " Style="{StaticResource lb1}"/>
+                                <Label Grid.Row="1" Grid.Column="1" Text="{Binding cliente}" Style="{StaticResource lbRest}" />
+                                <Label Grid.Row="2" Grid.Column="1" Text="{Binding ano_assistencia}" Style="{StaticResource lbRest}" />
+                                <Label Grid.Row="3" Grid.Column="1" Text="{Binding pago_no_local}" Style="{StaticResource lbRest}" />
+                                <Label Grid.Row="4" Grid.Column="1" Text="{Binding espera_em_minutos}" Style="{StaticResource lbRest}" />
+                                <Label Grid.Row="5" Grid.Column="1" Text="{Binding numero_acompanhantes}" Style="{StaticResource lbRest}"  />
+                                <Label Grid.Row="6" Grid.Column="1" Text="{Binding numero_assistencia}" Style="{StaticResource lbRest}" />
+                                <Label Grid.Row="7" Grid.Column="1" Text="{Binding carga_hora, StringFormat='\{0:dd-MM-yyyy hh:mm\}'}"  Style="{StaticResource lbRest}"  />
+                                <Label Grid.Row="8" Grid.Column="1" Text="{Binding descarga_hora}" Style="{StaticResource lbRest}" />
+                                <Label Grid.Row="9" Grid.Column="1" Text="{Binding codigo_terceiro}" Style="{StaticResource lbRest}"  />
+                                <Label Grid.Row="10" Grid.Column="1" Text="{Binding contacto_nome}" Style="{StaticResource lbRest}"  />
+                                <Label Grid.Row="11" Grid.Column="1" Text="{Binding contacto_telefone}" Style="{StaticResource lbRest}" >
+                                    <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Telefone" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label Grid.Row="12" Grid.Column="1" Text="{Binding carga_kms}" Style="{StaticResource lbRest}" />
+                                <Label Grid.Row="13" Grid.Column="1" Text="{Binding descarga_kms}" Style="{StaticResource lbRest}"  />
+                                <Label Grid.Row="14" Grid.Column="1" Text="{Binding estado}" Style="{StaticResource lbRest}" />
+                                <Label Grid.Row="15" Grid.Column="1" Text="{Binding carga_local}" Style="{StaticResource lbRest}"  >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Carga" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label Grid.Row="16" Grid.Column="1" Text="{Binding descarga_local}" Style="{StaticResource lbRest}"  >
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_Descarga" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                                <Label Grid.Row="17" Grid.Column="1" Text="{Binding carga_observacaoes}"  Style="{StaticResource lbRest}" />
+                                <Label Grid.Row="18" Grid.Column="1" x:Name="des_obser" Text="{Binding descarga_observacoes}" Style="{StaticResource lbRest}" />
+                                <Label Grid.Row="19" Grid.Column="1" Text="{Binding matricula}" Style="{StaticResource lbRest}"/>
+                                <Button Grid.Row="0" Grid.Column="0" Text="Editar" Clicked="OnEdit_ClickedAsync" Style="{StaticResource buttonStyle}"/>
+                                <Button Grid.Row="0" Grid.Column="1" Text="Iniciar Serviço" Clicked="Button_Clicked_Start" IsVisible="{Binding IsVisible}" Style="{StaticResource buttonStyle}"/>
+                                <Button Grid.Row="0" Grid.Column="1" Text="Fechar Serviço" Clicked="Button_Clicked_Fechar" IsVisible="{Binding IsVisiblee}" Style="{StaticResource buttonStyle}"/>
+                            </Grid>
+                    </ViewCell.View>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+            </ListView>
+    </StackLayout>
+</ContentPage>

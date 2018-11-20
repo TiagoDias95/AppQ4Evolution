@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sm="clr-namespace:AppQ4evo.Services"
+             xmlns:colorServico="clr-namespace:AppQ4evo.Services"
+             xmlns:enum="clr-namespace:AppQ4evo.ViewModels"
+             x:Class="AppQ4evo.Views.Servicos"
+             BackgroundColor="White">
+    <ContentPage.BindingContext>
+        <sm:ServicosMenu/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <Style x:Key="buttonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="LightSlateGray"/>
+            <Setter Property="BorderRadius" Value="5"/>
+            <Setter Property="HeightRequest" Value="42"/>
+            <Setter Property="Opacity" Value="0.8"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Margin" Value="2"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="iconCalendario" Order="Primary" Icon="icalendar.png" Priority="-1" Clicked="Calendario_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid x:Name="serv" Padding="-2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="ListViewHeaders">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <BoxView Color="Black" Grid.Row="0" Grid.ColumnSpan="8" HeightRequest="0.5" />
+            <BoxView Color="DimGray"  Grid.Row="0" Grid.ColumnSpan="8" />
+            <Label Grid.Column="1" Text="Cliente" XAlign="Center" YAlign="Center" TextColor="White" FontAttributes="Bold" FontSize="Small"/>
+            <Label Grid.Column="2" Text="Inicio" XAlign="Center" YAlign="Center" TextColor="White" FontAttributes="Bold" FontSize="Small"/>
+            <Label Grid.Column="3" Text="Segurado" XAlign="Center" YAlign="Center" TextColor="White" FontAttributes="Bold" FontSize="Small"/>
+            <Label Grid.Column="4" Text="Local de Partida" XAlign="Center" YAlign="Center" TextColor="White" FontAttributes="Bold" FontSize="Small"/>
+            <Label Grid.Column="5" Text="Local de Destino" XAlign="Center" YAlign="Center" TextColor="White" FontAttributes="Bold" FontSize="Small"/>
+            <Label Grid.Column="6" Text="Veiculo" XAlign="Center" YAlign="Center" TextColor="White" FontAttributes="Bold" FontSize="Small"/>
+            <Label Grid.Column="7" Text="Estado" XAlign="Center" YAlign="Center" TextColor="White" FontAttributes="Bold" FontSize="Small"/>
+        </Grid>
+        <AbsoluteLayout x:Name="absLayout" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <ListView x:Name="ll" ItemsSource="{Binding ListSer}"
+                  HasUnevenRows="True"
+                  Margin="0,38"    
+                  ItemTapped="ListView_ItemTapped" BackgroundColor="White"  HeightRequest="{Binding Path=Height, Source={x:Reference absLayout}}"
+                  WidthRequest="{Binding Path=Width, Source={x:Reference absLayout}}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid Padding="1,0,1,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="90"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                        <RowDefinition Height="Auto"></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="10"></ColumnDefinition>
+                                        <ColumnDefinition Width="1*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Text="Detalhes" Clicked="Button_Clicked_DetalhesAsync"
+                                IsVisible="{Binding IsVisible}" Grid.Row="2" Grid.ColumnSpan="8" Style="{StaticResource buttonStyle}"/>
+                                    <Button Text="Anexos" Clicked="Button_Clicked_AnexosAsync"
+                                IsVisible="{Binding IsVisible}" Grid.Row="3" Grid.ColumnSpan="8" Style="{StaticResource buttonStyle}"/>
+                                    <BoxView Color="Black" Grid.Row="0" Grid.ColumnSpan="8" HeightRequest="1.0" />
+                                    <BoxView Color="DimGray" Margin="5, 0, 0, 0" Grid.Column="0" Grid.Row="1" />
+                                    <Label Grid.Row="1" Grid.Column="1" Text="{Binding cliente}"  XAlign="Center" YAlign="Center" FontSize="Medium" TextColor="Black"/>
+                                    <Label Grid.Row="1" Grid.Column="2" Text="{Binding carga_hora, StringFormat='\{0:dd-MM-yyyy hh:mm\}'}"  XAlign="Center" YAlign="Center" FontSize="Small" TextColor="Black"/>
+                                    <Label Grid.Row="1" Grid.Column="3" Text="{Binding contacto_nome}" FontSize="Medium"  XAlign="Center" YAlign="Center" TextColor="Black" />
+                                    <Label Grid.Row="1" Grid.Column="4" Text="{Binding carga_local}" FontSize="Small"  XAlign="Center" YAlign="Center" TextColor="Black"/>
+                                    <Label Grid.Row="1" Grid.Column="5" Text="{Binding descarga_local}" FontSize="Small"  XAlign="Center" YAlign="Center" TextColor="Black" />
+                                    <Label Grid.Row="1" Grid.Column="6" Text="{Binding matricula}" FontSize="Small" XAlign="Center" YAlign="Center" TextColor="Black"/>
+                                    <Frame Padding="-10" Margin="0,0,2,0" BackgroundColor="{Binding corEstado}" BorderColor="{Binding corEstado}" Grid.Row="1" Grid.Column="7">
+                                        <Label Text="{Binding estado}" FontSize="Medium"  XAlign="Center" YAlign="Center" TextColor="Black"/>
+                                    </Frame>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </AbsoluteLayout>
+    </Grid>
+</ContentPage>
+

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppQ4evo.Views.MainMenu">
+    <MasterDetailPage.Master>
+        <ContentPage Icon="menu_ham.png" Title="Menu" BackgroundColor="#616161">
+            <ScrollView>
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <Label Text="Menu" TextColor="White" FontAttributes="Bold" FontSize="Large" VerticalOptions="Center" HorizontalOptions="Center" Margin="5"/>
+                <StackLayout VerticalOptions="CenterAndExpand" Spacing="-5">
+                    <Image Source="avatar.png"></Image>
+                    <Label x:Name="UserName" TextColor="White" FontAttributes="Bold" FontSize="30" XAlign="Center"/>
+                </StackLayout>
+
+                    <StackLayout VerticalOptions="FillAndExpand" Spacing="-6.0" HeightRequest="200" WidthRequest="200">
+                    <ListView x:Name="MenuListView" ItemsSource="{Binding MainMenuItems}" ItemSelected="MainMenuItem_Selected" VerticalOptions="FillAndExpand" SeparatorVisibility="None" BackgroundColor="#f5f5f5">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Padding="15,10" VerticalOptions="FillAndExpand" Orientation="Horizontal" Spacing="20">
+                                        <Image Source="{Binding Icon}" WidthRequest="70" HeightRequest="70" VerticalOptions="Center" />
+                                        <Label VerticalOptions="Center" VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="Medium" TextColor="Black"/>
+                                    </StackLayout>
+                                </ViewCell> 
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                    <StackLayout VerticalOptions="End" Spacing="-5.0" HeightRequest="80" WidthRequest="80">
+                        <ListView x:Name="LogOut" ItemsSource="{Binding LogOutList}" ItemSelected="LogOutList_ItemSelected"  VerticalOptions="FillAndExpand" SeparatorVisibility="None" BackgroundColor="#f5f5f5">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Padding="25,10" VerticalOptions="EndAndExpand" Orientation="Horizontal" Spacing="20">
+                                            <Image Source="{Binding Icon}" WidthRequest="70" HeightRequest="70" VerticalOptions="Center" />
+                                            <Label VerticalOptions="Center" VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="Medium" TextColor="Black"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

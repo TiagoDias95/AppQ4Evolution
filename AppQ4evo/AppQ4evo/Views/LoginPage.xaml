@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:AppQ4evo.ViewModels"
+             x:Class="AppQ4evo.Views.LoginPage"
+             BackgroundColor="White"
+             NavigationPage.HasBackButton="False">
+    <ContentPage.BindingContext>
+        <viewModels:RssUser/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="Regist" Order="Primary" Icon="definicoes.png" Priority="-1" Clicked="RegistEmpre_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Grid.Column="0" Grid.Row="0">
+            <Image x:Name="fundo" Source="srw_logo_rectangular.jpg" Aspect="AspectFit"></Image>
+  
+        <Entry x:Name="user"
+               Text="{Binding user}"
+               Placeholder="Introduza o seu username"></Entry>
+
+        <Entry x:Name="pass"
+               Text="{Binding pass}"
+               Placeholder="Introduza a sua password"
+               IsPassword="True"></Entry>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Lembrar-me"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center">
+                    </Label>
+
+                    <Switch x:Name="lembrarSwitch"
+                    Toggled="lembrarSwitch_Toggled"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center">
+                    </Switch>
+                </StackLayout>
+                <Button x:Name="loginButton"
+                Text="Login" 
+                Clicked="loginButton_ClickedAsync"
+                TextColor="WhiteSmoke"
+                CornerRadius="10"
+                BackgroundColor="LightSteelBlue" Margin="2">
+                </Button>
+            </StackLayout>
+    </StackLayout>
+    </ScrollView>
+</ContentPage>
