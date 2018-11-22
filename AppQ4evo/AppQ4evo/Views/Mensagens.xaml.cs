@@ -151,7 +151,7 @@ namespace AppQ4evo.Views
         private void SortSource(ObservableCollection<contacto> source, contacto item)
         {
             var oldIndex = source.IndexOf(item);
-            var list = source.OrderBy(_ => _.numero).ToList();
+            var list = source.OrderByDescending(_ => _.numero).ToList();
             var newIndex = list.IndexOf(item);
             source.Move(oldIndex, newIndex);
         }
