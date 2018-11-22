@@ -33,7 +33,7 @@ namespace AppQ4evo.Droid
 
         public async void BGServiceCoor()
         {
-            await gp.StartLocAsync();
+            await gp.StartLocAsync(); 
 
             //_Check_timer_Data = new Timer(
             //    async (o) =>

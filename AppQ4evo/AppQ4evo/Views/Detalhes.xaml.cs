@@ -77,31 +77,44 @@ namespace AppQ4evo.Views
             }
         }
 
-        private void TapGestureRecognizer_Tapped_Telefone(object sender, EventArgs e)
+        //private void TapGestureRecognizer_Tapped_Telefone(object sender, EventArgs e)
+        //{
+        //    PlacePhoneCall(Rote[0].contacto_telefone);
+        //}
+
+        //private async void TapGestureRecognizer_Tapped_Carga(object sender, EventArgs e)
+        //{
+        //    var placemark = new Placemark
+        //    {
+        //        CountryName = "Portugal",
+        //        AdminArea = Rote[0].carga_local
+        //    };
+        //    var options = new MapsLaunchOptions { MapDirectionsMode = MapDirectionsMode.Driving };
+        //    await Maps.OpenAsync(placemark, options);
+        //}
+
+        //private async void TapGestureRecognizer_Tapped_Descarga(object sender, EventArgs e)
+        //{
+        //    var placemark = new Placemark
+        //    {
+        //        CountryName = "Portugal",
+        //        AdminArea = Rote[0].descarga_local              
+        //    };
+        //    var options = new MapsLaunchOptions { MapDirectionsMode = MapDirectionsMode.Driving };
+        //    await Maps.OpenAsync(placemark, options);
+        //}
+
+        private async void iconTrajeto_Clicked(object sender, EventArgs e)
+        {
+            await PopupNavigation.Instance.PushAsync(new PopUpMoradas(Rote[0]));
+
+        }
+
+        private void iconContacto_Clicked(object sender, EventArgs e)
         {
             PlacePhoneCall(Rote[0].contacto_telefone);
-        }
 
-        private async void TapGestureRecognizer_Tapped_Carga(object sender, EventArgs e)
-        {
-            var placemark = new Placemark
-            {
-                CountryName = "Portugal",
-                AdminArea = Rote[0].carga_local
-            };
-            var options = new MapsLaunchOptions { MapDirectionsMode = MapDirectionsMode.Driving };
-            await Maps.OpenAsync(placemark, options);
-        }
 
-        private async void TapGestureRecognizer_Tapped_Descarga(object sender, EventArgs e)
-        {
-            var placemark = new Placemark
-            {
-                CountryName = "Portugal",
-                AdminArea = Rote[0].descarga_local              
-            };
-            var options = new MapsLaunchOptions { MapDirectionsMode = MapDirectionsMode.Driving };
-            await Maps.OpenAsync(placemark, options);
         }
     }
 }

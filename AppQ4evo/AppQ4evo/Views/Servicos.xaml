@@ -29,7 +29,7 @@
 
     <Grid x:Name="serv" Padding="-2">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid x:Name="ListViewHeaders">
